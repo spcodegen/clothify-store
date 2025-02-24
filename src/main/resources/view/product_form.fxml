@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="479.0" prefWidth="723.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProductFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#002240" height="79.0" stroke="BLACK" strokeType="INSIDE" width="723.0" />
+      <Label layoutX="284.0" layoutY="22.0" text="Product Form" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField layoutX="44.0" layoutY="139.0" promptText="Product ID" />
+      <TextField layoutX="210.0" layoutY="139.0" promptText="Description" />
+      <ComboBox layoutX="44.0" layoutY="97.0" prefWidth="150.0" promptText="Supplier ID" />
+      <TextField layoutX="544.0" layoutY="139.0" promptText="QTY" />
+      <TextField layoutX="210.0" layoutY="175.0" promptText="Price" />
+      <ComboBox layoutX="44.0" layoutY="175.0" prefWidth="150.0" promptText="Categoty" />
+      <ComboBox layoutX="375.0" layoutY="139.0" prefWidth="150.0" promptText="Size" />
+      <TextField layoutX="210.0" layoutY="97.0" promptText="Name" />
+      <Button layoutX="629.0" layoutY="208.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="Add" />
+      <Button layoutX="553.0" layoutY="208.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="Update" />
+      <Button layoutX="480.0" layoutY="208.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="Remove" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="463.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#002240" height="71.0" stroke="BLACK" strokeType="INSIDE" width="716.0" />
+      <Label alignment="CENTER" layoutX="276.0" layoutY="22.0" prefHeight="27.0" prefWidth="164.0" text="Order Form" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="569.0" layoutY="18.0" text="Date :" textFill="WHITE" />
+      <Label layoutX="569.0" layoutY="37.0" text="Time :" textFill="WHITE" />
+      <Label fx:id="lblDate" layoutX="607.0" layoutY="18.0" text="dd-MM-yyyy" textFill="WHITE" />
+      <Label fx:id="lblTime" layoutX="607.0" layoutY="37.0" text="00:00:00" textFill="WHITE" />
+      <TextField fx:id="txtOrderId" layoutX="538.0" layoutY="85.0" promptText="Order ID" />
+      <ComboBox fx:id="cmbProductId" layoutX="22.0" layoutY="121.0" prefWidth="150.0" promptText="Product ID" />
+      <TextField fx:id="txtProductName" layoutX="187.0" layoutY="121.0" promptText="Name" />
+      <TextField fx:id="txtQty" layoutX="358.0" layoutY="160.0" promptText="Qty" />
+      <ComboBox fx:id="cmbSize" layoutX="22.0" layoutY="160.0" prefWidth="150.0" promptText="Size" />
+      <TextField fx:id="txtStock" layoutX="358.0" layoutY="121.0" promptText="Stock" />
+      <TextField fx:id="txtUnitPrice" layoutX="537.0" layoutY="121.0" promptText="Unit Price" />
+      <Button layoutX="522.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnAddToCartOnAction" prefHeight="25.0" prefWidth="82.0" text="Add to Cart" />
+      <Button layoutX="616.0" layoutY="160.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="25.0" prefWidth="69.0" text="Clear" />
+      <TableView fx:id="tblOrder" layoutX="22.0" layoutY="200.0" prefHeight="205.0" prefWidth="663.0">
+        <columns>
+          <TableColumn fx:id="colProductId" prefWidth="114.0" text="Product ID" />
+          <TableColumn fx:id="colName" prefWidth="165.0" text="Name" />
+            <TableColumn fx:id="colQty" prefWidth="94.0" text="Qty" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="150.0" text="Unit Price" />
+            <TableColumn fx:id="colTotal" prefWidth="139.0" text="Total" />
+        </columns>
+      </TableView>
+      <Label layoutX="22.0" layoutY="420.0" text="Net Total : " textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblNetTotal" layoutX="95.0" layoutY="420.0" text="0.00" textFill="RED">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="583.0" layoutY="418.0" mnemonicParsing="false" onAction="#btnPlaceOrderOnAction" prefHeight="25.0" prefWidth="100.0" text="Place Order" />
+      <Button layoutX="469.0" layoutY="418.0" mnemonicParsing="false" onAction="#btnCommitOnAction" prefHeight="25.0" prefWidth="100.0" text="Commit" />
+      <TextField fx:id="txtPaymentMethod" layoutX="187.0" layoutY="160.0" promptText="Payment Method" />
+      <TextField fx:id="txtEmployeeId" layoutX="23.0" layoutY="85.0" promptText="EmployeeID" />
+   </children>
+</AnchorPane>
