@@ -55,8 +55,12 @@ public class DashBoardFormController {
     }
 
     @FXML
-    void btnSupplierFormOnAction(ActionEvent event) {
-
+    void btnSupplierFormOnAction(ActionEvent event) throws IOException {
+        URL resource = this.getClass().getResource("/view/supplier_form.fxml");
+        assert resource!=null;
+        Parent load = FXMLLoader.load(resource);
+        loadFormContent.getChildren().clear();
+        loadFormContent.getChildren().add(load);
     }
 
 }
