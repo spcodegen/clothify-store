@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -44,34 +45,28 @@ public class SupplierFormController {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
-        String SQL ="INSERT INTO supplier VALUES(?,?,?,?)";
-
-        String supplierId = txtSupplierId.getText();
-        String name = txtName.getText();
-        String email = txtEmail.getText();
-        String company = txtCompany.getText();
-
-        Supplier supplier = new Supplier(supplierId, name, email, company);
-
-        try {
-            Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement psTm = connection.prepareStatement(SQL);
-
-            psTm.setObject(1, supplier.getId());
-            psTm.setObject(2, supplier.getName());
-            psTm.setObject(3, supplier.getEmail());
-            psTm.setObject(4, supplier.getCompany());
-            int i = psTm.executeUpdate();
-            System.out.println(i);
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        boolean isSupplierAdd = new SupplierController().addSupplier(
+                new Supplier(
+                        txtSupplierId.getText(),
+                        txtName.getText(),
+                        txtEmail.getText(),
+                        txtCompany.getText()
+                ));
+        if (isSupplierAdd) {
+            new Alert(Alert.AlertType.INFORMATION, "Supplier Added!!!").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Supplier Not Added!!!").show();
         }
     }
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-
+        boolean isDeleted = new SupplierController().deleteSupplier(txtSupplierId.getText());
+        if (isDeleted){
+            new Alert(Alert.AlertType.INFORMATION,"Delete Success!!!").show();
+        }else {
+            new Alert(Alert.AlertType.ERROR,"Note Deleted!!!").show();
+        }
     }
 
     @FXML
@@ -97,18 +92,41 @@ public class SupplierFormController {
                         resultSet.getString(4)
                 ));
             }
-
             tblSupplier.setItems(customerObservableList);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        boolean isUpdated = new SupplierController().updateSupplier(new Supplier(
+                txtSupplierId.getText(),
+                txtName.getText(),
+                txtEmail.getText(),
+                txtCompany.getText()
+        ));
 
+        if (isUpdated){
+            new Alert(Alert.AlertType.INFORMATION,"Update Success!!!").show();
+        }else {
+            new Alert(Alert.AlertType.ERROR,"Update Fail!!!").show();
+        }
     }
 
+    public void btnSearchOnAction(ActionEvent actionEvent) {
+        txtSupplierIdOnAction(actionEvent);
+    }
+
+    public void txtSupplierIdOnAction(ActionEvent actionEvent) {
+
+        Supplier supplier = new SupplierController().searchSupplier(
+                txtSupplierId.getText());
+
+        System.out.println(supplier);
+
+        txtName.setText(supplier.getName());
+        txtEmail.setText(supplier.getEmail());
+        txtCompany.setText(supplier.getCompany());
+    }
 }
