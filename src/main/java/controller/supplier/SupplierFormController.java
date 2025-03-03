@@ -11,6 +11,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Supplier;
+import service.ServiceFactory;
+import service.SuperService;
+import service.custom.SupplierService;
+import service.custom.impl.SupplierServiceImpl;
+import util.ServiceType;
 
 import java.sql.*;
 
@@ -43,20 +48,31 @@ public class SupplierFormController {
     @FXML
     private TextField txtSupplierId;
 
+    SupplierService service=ServiceFactory.getInstance().getServiceType(ServiceType.SUPPLIER);
+
     @FXML
     void btnAddOnAction(ActionEvent event) {
-        boolean isSupplierAdd = new SupplierController().addSupplier(
-                new Supplier(
-                        txtSupplierId.getText(),
-                        txtName.getText(),
-                        txtEmail.getText(),
-                        txtCompany.getText()
-                ));
-        if (isSupplierAdd) {
+
+        boolean isSupplierAdd = service.addSupplier(new Supplier(txtSupplierId.getText(), txtName.getText(), txtEmail.getText(), txtCompany.getText()));
+
+        if (isSupplierAdd){
             new Alert(Alert.AlertType.INFORMATION, "Supplier Added!!!").show();
-        } else {
+        }else {
             new Alert(Alert.AlertType.ERROR, "Supplier Not Added!!!").show();
         }
+
+//        boolean isSupplierAdd = new SupplierController().addSupplier(
+//                new Supplier(
+//                        txtSupplierId.getText(),
+//                        txtName.getText(),
+//                        txtEmail.getText(),
+//                        txtCompany.getText()
+//                ));
+//        if (isSupplierAdd) {
+//            new Alert(Alert.AlertType.INFORMATION, "Supplier Added!!!").show();
+//        } else {
+//            new Alert(Alert.AlertType.ERROR, "Supplier Not Added!!!").show();
+//        }
     }
 
     @FXML
