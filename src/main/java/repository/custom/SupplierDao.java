@@ -1,4 +1,9 @@
 package repository.custom;
 
-public interface SupplierDao {
+import entity.SupplierEntity;
+import model.Supplier;
+import repository.CrudRepository;
+import repository.SuperDao;
+
+public interface SupplierDao extends CrudRepository<SupplierEntity,String> {
 }
